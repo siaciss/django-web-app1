@@ -1,0 +1,12 @@
+{% extends 'listings/base.html' %}
+
+{% block title %} / Mes annonces {% endblock %}
+
+{% block content %}
+        <h1>Mes Annonces</h1>
+        <ol>
+            {% for listing in listings %}
+            <li>{{listing.title}}</li>
+            {% endfor %}
+        </ol>
+{% endblock %}
