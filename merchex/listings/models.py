@@ -15,6 +15,10 @@ class Band(models.Model):
     year_formed = models.fields.IntegerField(validators=[MinValueValidator(1900), MaxValueValidator(2021)])
     active = models.fields.BooleanField(default=True)
     official_homepage = models.fields.URLField(null=True, blank=True)
+    #like_new = models.fields.BooleanField(default=False)          ligne á supprimer
+
+    def __str__(self):
+        return f'{self.name}'
 
 class Listing(models.Model):
 
@@ -26,7 +30,13 @@ class Listing(models.Model):
 
     title = models.fields.CharField(max_length=100)
     description = models.fields.CharField(max_length=1000)
-    sold = models.fields.BooleanField(default=True)
+    sold = models.fields.BooleanField(default=False)
     year = models.fields.IntegerField(null=True)
     type = models.fields.CharField(choices=Type.choices, max_length=20)
+    
+    band = models.ForeignKey(Band, null=True, on_delete=models.SET_NULL)
+
+    #def __str__(self):
+        #return f'{self.title}'
+
     

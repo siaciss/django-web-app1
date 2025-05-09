@@ -1,0 +1,21 @@
+{% extends "listings/base.html" %}
+
+{% block title %} / listings details {% endblock %}
+{% block content %}
+
+    <h2>{{annonce.title}}</h2>
+    <ul>
+        <li>Solded ? {{annonce.sold |yesno}}</li>
+        {% if annonce.year %}
+        <li>Year : {{annonce.year}}</li>
+        {% endif %}
+        <li>Type : {{annonce.get_type_display}}</li>
+        {% if annonce.band %}
+        <li><a href="{% url 'band-detail' annonce.band.id %}">{{annonce.band}}</a></li>
+        {% endif %}
+    </ul>
+
+    <p>{{annonce.description}}</p>
+
+    <a href="{% url 'annonces-list' %}">Retour liste des annonces</a>
+{% endblock %}
