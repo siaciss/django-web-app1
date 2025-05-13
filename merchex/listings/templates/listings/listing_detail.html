@@ -17,5 +17,9 @@
 
     <p>{{annonce.description}}</p>
 
-    <a href="{% url 'annonces-list' %}">Retour liste des annonces</a>
+    <div style="display: flex; gap: 15px;">
+        <a href="{% url 'annonces-list' %}">Retour liste des annonces</a>
+        <a href="{% url 'listing-update' annonce.id %}">Modifier</a>
+        <a href="{% url 'listing-delete' annonce.id %}" style="color: red;">Supprimer</a>
+    </div>
 {% endblock %}

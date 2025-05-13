@@ -7,7 +7,11 @@
     <p>Mes groupes préférés sont : </p>
     <ul>
         {% for band in bands %}
-        <li><a href="{% url 'band-detail' band.id %}">{{band.name}}</a></li>
+        <li>
+            <a href="{% url 'band-detail' band.id %}">{{band.name}}</a>
+            - <a style="font-size: 12px;" href="{% url 'band-update' band.id %}">[Modifier]</a>
+            - <a style="font-size: 12px; color: red;" href="{% url 'band-delete' band.id %}">[Supprimer]</a>
+        </li>
         {% endfor %}
     </ul>
     <p>J'ai {{bands | length}} groupe préférés.</p>
@@ -23,4 +27,6 @@
         {% endif %}
         groupes préférés
     </p>
+
+    <p><a href="{% url 'band-create' %}">Ajouter un nouveau groupe</a></p>
 {% endblock %}

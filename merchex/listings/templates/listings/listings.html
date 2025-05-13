@@ -3,10 +3,16 @@
 {% block title %} / Mes annonces {% endblock %}
 
 {% block content %}
-        <h1>Mes Annonces</h1>
-        <ol>
-            {% for listing in listings %}
-            <li>{{listing.title}}</li>
-            {% endfor %}
-        </ol>
+    <h1>Mes Annonces</h1>
+    <ol>
+        {% for listing in listings %}
+        <li>
+            <a href="{% url 'listing-detail' listing.id %}" style="text-decoration: none; color: #000;">{{listing.title}}</a>
+            <a href="{% url 'listing-update' listing.id %}" style="font-size: 12px;">Modifier</a>
+            <a href="{% url 'listing-delete' listing.id %}" style="font-size: 12px; color: red;">Supprimer</a>
+        </li>
+        {% endfor %}
+    </ol>
+    
+    <p><a href="{% url 'listing-create' %}">Ajouter annonce</a></p>
 {% endblock %}
